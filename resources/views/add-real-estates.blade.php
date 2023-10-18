@@ -50,13 +50,20 @@
                                 </select>
                             </div>
                             <div class="input-box">
-                                <label>نوع الاعلان (بيت مستقل, شقة, مكتب, محل)   </label>
-                                <input type="text" name="ad_type" placeholder=" نوع الاعلان">
+                                <label>نوع العرض ( بيع, أجار, شراء)   </label>
+                                <select name="type_id">
+                                    @foreach(App\Models\RealestatesType::all() as $item)
+                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="input-box">
-                                <label>نوع العرض ( بيع, أجار, شراء)   </label>
-                                <input type="text" name="real_estate_type" placeholder=" نوع العرض">
-                            </div>
+                                <label>نوع الاعلان (بيت مستقل, شقة, مكتب, محل)   </label>
+                                <select name="ad_id">
+                                    @foreach(App\Models\AdType::all() as $item)
+                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                    @endforeach
+                                </select>                            </div>
                             <div class="input-box">
                                 <label> مساحة المكان</label>
                                 <input type="text" name="space"  placeholder=" ادخل المساحة">

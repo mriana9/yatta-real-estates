@@ -23,8 +23,8 @@ class RealEstateController extends Controller
             'description' => 'required',
             'place' => 'required',
             'space' => 'required',
-            'real_estate_type' => 'required',
-            'ad_type' => 'required',
+            'type_id' => 'required',
+            'ad_id' => 'required',
             'price' => 'required',
             'price' => 'required',
             'currency_id' => 'required',
@@ -35,8 +35,8 @@ class RealEstateController extends Controller
             'description.required' => 'حقل الوصف مطلوب.',
             'place.required' => 'حقل المنطقة مطلوب.',
             'space.required' => 'حقل المساحة مطلوب.',
-            'real_estate_type.required' => 'حقل نوع العقار مطلوب.',
-            'ad_type.required' => 'حقل نوع العرض مطلوب.',
+            'type_id.required' => 'حقل نوع العقار مطلوب.',
+            'ad_id.required' => 'حقل نوع العرض مطلوب.',
             'price.required' => 'حقل السعر مطلوب.',
             'image.required' => 'حقل الصورة مطلوب.',
             'currency_id.required' => 'حقل العملة مطلوب.'
@@ -47,8 +47,8 @@ class RealEstateController extends Controller
             'description.required' => 'حقل الوصف مطلوب.',
             'place.required' => 'حقل المنطقة مطلوب.',
             'space.required' => 'حقل المساحة مطلوب.',
-            'real_estate_type.required' => 'حقل نوع العقار مطلوب.',
-            'ad_type.required' => 'حقل نوع العرض مطلوب.',
+            'type_id.required' => 'حقل نوع العقار مطلوب.',
+            'ad_id.required' => 'حقل نوع العرض مطلوب.',
             'price.required' => 'حقل السعر مطلوب.',
             'image.required' => 'حقل الصورة مطلوب.',
             'currency_id.required' => 'حقل العملة مطلوب.'
@@ -59,8 +59,8 @@ class RealEstateController extends Controller
             'description' => 'required',
             'place' => 'required',
             'space' => 'required',
-            'real_estate_type' => 'required',
-            'ad_type' => 'required',
+            'type_id' => 'required',
+            'ad_id' => 'required',
             'price' => 'required',
             'currency_id.required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -99,13 +99,11 @@ class RealEstateController extends Controller
         $image->description = $request->input('description');
         $image->place = $request->input('place');
         $image->space = $request->input('space');
-        $image->real_estate_type = $request->input('real_estate_type');
-        $image->ad_type = $request->input('ad_type');
         $image->price = $request->input('price');
-        //$image->user_name = $request->input('user_name');
-        //$image->user_phone = $request->input('user_phone');
         $image->user_id = auth()->user()->id;
         $image->currency_id = $request->input('currency_id');
+        $image->type_id = $request->input('type_id');
+        $image->ad_id = $request->input('ad_id');
         // Save the image data to the database
         $image->save();
 
