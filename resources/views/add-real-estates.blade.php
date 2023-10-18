@@ -43,15 +43,11 @@
                             </div>
                             <div class="input-box">
                                 <label> العملة</label>
-                                <input list="datalistOptionsCurrency" id="exampleDataList"name="currency_id" placeholder="العملة">
-                                <datalist id="datalistOptionsCurrency">
                                 <select name="currency_id">
-                                    @foreach($currencies as $currency)
-                                        <option value="{{ $currency->id }}">{{ $currency->title }}</option>
-                                    @endforeach
+                                @foreach(App\Models\Currency::all() as $currency)
+                                    <option value="{{ $currency->id }}">{{ $currency->title }}</option>
+                                @endforeach
                                 </select>
-
-                                </datalist>        
                             </div>
                             <div class="input-box">
                                 <label>نوع الاعلان (بيت مستقل, شقة, مكتب, محل)   </label>
