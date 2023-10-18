@@ -421,18 +421,21 @@ main {
     font-weight: 700;
 }
 
+.contact-us .contact-form .input-box,
 .add-real-state-modal .input-box {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
 
+.contact-us .contact-form .input-box label,
 .add-real-state-modal .input-box label {
     color: var(--dark-color);
     font-weight: 600;
     font-size: 16px;
 }
 
+.contact-us .contact-form .input-box textarea,
 .add-real-state-modal .input-box textarea {
     height: 35vh;
 }
@@ -443,6 +446,8 @@ main {
     font-size: 28px;
 }
 
+.contact-us .contact-form .input-box input,
+.contact-us .contact-form .input-box textarea,
 .add-real-state-modal .input-box select,
 .add-real-state-modal .input-box textarea,
 .add-real-state-modal .input-box input {
@@ -452,6 +457,7 @@ main {
     margin-top: 10px;
 }
 
+.contact-us .contact-form .input-box input::placeholder,
 .add-real-state-modal .input-box select::placeholder,
 .add-real-state-modal .input-box textarea::placeholder,
 .add-real-state-modal .input-box input::placeholder {
@@ -459,6 +465,9 @@ main {
     font-size: 14px;
 }
 
+
+.contact-us .contact-form .input-box input:focus,
+.contact-us .contact-form .input-box textarea:focus,
 .add-real-state-modal .input-box select:focus,
 .add-real-state-modal .input-box textarea:focus,
 .add-real-state-modal .input-box input:focus {
@@ -520,12 +529,14 @@ main {
     transition: all 0.5s ease-in-out;
 }
 
+.contact-us .btn-primary,
 .add-real-state-modal .btn-primary {
     border-color: var(--dark-color) !important;
     color: var(--dark-color) !important;
     background-color: #fff !important;
 }
 
+.contact-us .btn-primary:hover,
 .add-real-state-modal .btn-primary:hover {
     background-color: var(--dark-color) !important;
     color: #fff !important;
@@ -544,7 +555,6 @@ footer {
     justify-content: center;
     background-color: var(--dark-color);
 }
-
 
 
 /*register-view*/
@@ -702,6 +712,35 @@ footer {
     font-size: 24px;
     padding-top: 15px;
 }
+
+/*contact-us */
+.contact-us {
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.contact-us .contact-form {
+    width: 60vw;
+    min-height: 100vh;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-us .contact-form .title {
+    color: var(--dark-color);
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.contact-us .contact-form .description {
+    color:#6c757d;
+    font-size: 22px;
+    padding-top: 15px;
+}
+
+
 
 
 

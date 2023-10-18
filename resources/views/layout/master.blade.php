@@ -22,7 +22,7 @@
                         <a class="nav-link {{ request()->is('all-real-estates*') ? 'active' : '' }}" href="{{ route('all-real-estates') }}">العقارات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">الاتصال بنا</a>
+                        <a  class="nav-link {{ request()->is('contact*') ? 'active' : '' }}" href="{{ route('contact') }}">الاتصال بنا</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a href="#" type="button"  class="btn btn-primary login mx-2"> أعلن عن عقار</a>

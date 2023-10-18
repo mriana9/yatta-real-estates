@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\RealEstateController;
+use App\Http\Controllers\ContactController;
 use App\Models\RealEstate;
 
 /*
@@ -32,6 +33,9 @@ Route::post('/add-real-estate',[RealEstateController::class, 'addRealEstatePost'
 
 Route::get('/all-real-estates', function () { return view('all-real-estates');})->name('all-real-estates');
 Route::get('/add-real-estates', function () { return view('add-real-estates');})->name('add-real-estates');
+Route::get('/contact', function () { return view('contact');})->name('contact');
+Route::post('/contact',[ContactController::class, 'addContactPost'])->name('contact.post');
+
 Route::get('/real-estate/{id}', [RealEstateController::class, 'showRealEstateDetails'])->name('real-estate.details');
 
 
