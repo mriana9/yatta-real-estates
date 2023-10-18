@@ -433,6 +433,16 @@ main {
     font-size: 16px;
 }
 
+.add-real-state-modal .input-box textarea {
+    height: 35vh;
+}
+
+.add-real-state-modal .section-title {
+    font-weight: 800;
+    color: var(--dark-color);
+    font-size: 28px;
+}
+
 .add-real-state-modal .input-box select,
 .add-real-state-modal .input-box textarea,
 .add-real-state-modal .input-box input {
@@ -652,6 +662,49 @@ footer {
     border-color: var(--primary-color) !important;
     transition: all 0.3s ease-in-out;
 }
+
+/*details-info*/
+.details-info {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.details-info .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.details-info .image-box {
+    width: 100%;
+    height: 55vh;
+    margin-top: 20px;
+    background-color: #6c757d;
+}
+
+.details-info .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.details-info .description {
+    color: #333;
+    padding-top: 15px;
+}
+
+.details-info .details span {
+    font-weight: 600;
+}
+
+.details-info h2 {
+    font-weight: 900;
+    font-size: 24px;
+    padding-top: 15px;
+}
+
+
+
 
 @media screen and (max-width:1024px){
     .main-section .search-bar .search-card {

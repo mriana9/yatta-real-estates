@@ -30,7 +30,6 @@ Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 Route::get('/add-real-estate', [RealEstateController::class, 'addRealEstate'])->name('register');
 Route::post('/add-real-estate',[RealEstateController::class, 'addRealEstatePost'])->name('add-real-estate.post');
 
-//Route::get('/all-real-estates', RealEstateController::class,'allRealEstates')->name('all-real-estates');
 Route::get('/all-real-estates', function () { return view('all-real-estates');})->name('all-real-estates');
 Route::get('/add-real-estates', function () { return view('add-real-estates');})->name('add-real-estates');
 Route::get('/real-estate/{id}', [RealEstateController::class, 'showRealEstateDetails'])->name('real-estate.details');

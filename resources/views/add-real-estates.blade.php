@@ -20,93 +20,94 @@
     <main>
         <div class="container">
         <div class="add-real-state-modal">
-        <div class="modal-body">
-            <form method="POST" action="{{ route('add-real-estate.post') }}" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                            <div class="input-box">
-                                <label>عنوان الاعلان</label>
-                                <input type="text" name="title" placeholder="ادخل العنوان">
-                            </div>
-                            <div class="input-box">
-                                <label>وصف الاعلان</label>
-                                <textarea type="text" name="description" placeholder="ادخل الوصف"></textarea>
-                            </div>
-                            <div class="input-box">
-                                <label>اسم المنظقة</label>
-                                <input type="text" name="place" placeholder="اسم المنظقة">
-                            </div>
-                            <div class="input-box">
-                                <label> السعر</label>
-                                <input type="text" name="price" placeholder="السعر">
-                            </div>
-                            <div class="input-box">
-                                <label> العملة</label>
-                                <select name="currency_id">
-                                @foreach(App\Models\Currency::all() as $currency)
-                                    <option value="{{ $currency->id }}">{{ $currency->title }}</option>
-                                @endforeach
-                                </select>
-                            </div>
-                            <div class="input-box">
-                                <label>نوع العرض ( بيع, أجار, شراء)   </label>
-                                <select name="type_id">
-                                    @foreach(App\Models\RealestatesType::all() as $item)
-                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+            <div class="section-title"> <i class="bx bx-plus"></i>الاعلان عن عقار جديد</div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('add-real-estate.post') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                                <div class="input-box">
+                                    <label>عنوان الاعلان</label>
+                                    <input type="text" name="title" placeholder="ادخل العنوان">
+                                </div>
+                                <div class="input-box">
+                                    <label>وصف الاعلان</label>
+                                    <textarea type="text" name="description" placeholder="ادخل الوصف"></textarea>
+                                </div>
+                                <div class="input-box">
+                                    <label>اسم المنظقة</label>
+                                    <input type="text" name="place" placeholder="اسم المنظقة">
+                                </div>
+                                <div class="input-box">
+                                    <label> السعر</label>
+                                    <input type="text" name="price" placeholder="السعر">
+                                </div>
+                                <div class="input-box">
+                                    <label> العملة</label>
+                                    <select name="currency_id">
+                                    @foreach(App\Models\Currency::all() as $currency)
+                                        <option value="{{ $currency->id }}">{{ $currency->title }}</option>
                                     @endforeach
-                                </select>
-                            </div>
-                            <div class="input-box">
-                                <label>نوع الاعلان (بيت مستقل, شقة, مكتب, محل)   </label>
-                                <select name="ad_id">
-                                    @foreach(App\Models\AdType::all() as $item)
-                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
-                                    @endforeach
-                                </select>                            </div>
-                            <div class="input-box">
-                                <label> مساحة المكان</label>
-                                <input type="text" name="space"  placeholder=" ادخل المساحة">
-                            </div>
-                            <div class="input-box">
-                                <label>الاسم</label>
-                                <input type="text" name="user_name" placeholder="ادخل الاسم" value="{{ auth()->check() ? auth()->user()->name : '' }}">
-                            </div>
+                                    </select>
+                                </div>
+                                <div class="input-box">
+                                    <label>نوع العرض ( بيع, أجار, شراء)   </label>
+                                    <select name="type_id">
+                                        @foreach(App\Models\RealestatesType::all() as $item)
+                                            <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="input-box">
+                                    <label>نوع الاعلان (بيت مستقل, شقة, مكتب, محل)   </label>
+                                    <select name="ad_id">
+                                        @foreach(App\Models\AdType::all() as $item)
+                                            <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                        @endforeach
+                                    </select>                            </div>
+                                <div class="input-box">
+                                    <label> مساحة المكان</label>
+                                    <input type="text" name="space"  placeholder=" ادخل المساحة">
+                                </div>
+                                <div class="input-box">
+                                    <label>الاسم</label>
+                                    <input type="text" name="user_name" placeholder="ادخل الاسم" value="{{ auth()->check() ? auth()->user()->name : '' }}">
+                                </div>
 
-                            <div class="input-box">
-                                <label>رقم الهاتف</label>
-                                <input type="text" name="user_phone" placeholder="ادخل رقم الهاتف" value="{{ auth()->check() ? auth()->user()->phone : '' }}">
-                            </div>
-                            <div class="input-box d-flex justify-content-start">
-                                <label>اضافة صورة</label>
-                                <div class='file-input'>
-                                    <input type="file" name="image" accept="image/*" id="imageInput">
-                                    <span class='button' id="uploadButton">تحميل</span>
-                                    <span class='label' data-js-label>لم يتم تحميل صورة</span>
+                                <div class="input-box">
+                                    <label>رقم الهاتف</label>
+                                    <input type="text" name="user_phone" placeholder="ادخل رقم الهاتف" value="{{ auth()->check() ? auth()->user()->phone : '' }}">
+                                </div>
+                                <div class="input-box d-flex justify-content-start">
+                                    <label>اضافة صورة</label>
+                                    <div class='file-input'>
+                                        <input type="file" name="image" accept="image/*" id="imageInput">
+                                        <span class='button' id="uploadButton">تحميل</span>
+                                        <span class='label' data-js-label>لم يتم تحميل صورة</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                </div>
-
-                @error('title', 'description')
-                    <span class="error"><i class='bx bx-error-circle mx-2'></i>{{ $message }}</span>
-                @enderror
-
-                @if($errors->any())
-                    <div class="alert alert-danger mt-3">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>
-                                    <span class="error"><i class='bx bx-error-circle mx-2'></i>{{ $error }}</span>
-                                </li>
-                            @endforeach
-                        </ul>
                     </div>
-                @endif
 
-                <button type="submit" class="btn btn-primary w-100 my-3">ارسال</button>
-            </form>
-        </div>
+                    @error('title', 'description')
+                        <span class="error"><i class='bx bx-error-circle mx-2'></i>{{ $message }}</span>
+                    @enderror
+
+                    @if($errors->any())
+                        <div class="alert alert-danger mt-3">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>
+                                        <span class="error"><i class='bx bx-error-circle mx-2'></i>{{ $error }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <button type="submit" class="btn btn-primary w-100 my-3">ارسال</button>
+                </form>
+            </div>
         </div>
         </div>
     </main>
