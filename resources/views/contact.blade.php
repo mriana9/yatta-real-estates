@@ -22,6 +22,7 @@
             <div class="container d-flex justify-content-center">
                 <div class="contact-form">
                     <div class="title">تواصل معنا</div>
+
                     <div class="description">يسعدنا تواصلكم معنا, للاجابة على جميع استفساراتكم</div>
 
                     <form method="POST" action="{{ route('contact.post') }}">
@@ -43,6 +44,18 @@
                             <label>وصف الرسالة</label>
                             <textarea type="text" name="description" placeholder="ادخل الرسالة"></textarea>
                         </div>
+
+                        @if($errors->any())
+                        <div class="alert alert-danger mt-3">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>
+                                        <span class="error"><i class='bx bx-error-circle mx-2'></i>{{ $error }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                         <button type="submit" class="btn btn-primary w-100 my-3">ارسال</button>
 
