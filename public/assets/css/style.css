@@ -175,6 +175,7 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.search-bar .search-card input,
 .main-section .search-bar .search-card input {
     width: 100%;
 }
@@ -186,6 +187,7 @@ main {
     padding: 20px;
 }
 
+.search-bar .search-card .btn-outline-primary.search-btn,
 .main-section .search-bar .search-card .btn-outline-primary.search-btn {
     border-color: var(--dark-color) !important;
     background-color: var(--dark-color) !important;
@@ -193,6 +195,7 @@ main {
     color: #fff !important;
 }
 
+.search-bar .search-card input:focus,
 .main-section .search-bar .search-card input:focus {
     box-shadow: none !important;
     border: 1px solid var(--dark-color) !important;
@@ -357,34 +360,6 @@ main {
     align-items: end;
 }
 
-/* .recently-services .services-box .service-info {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.recently-services .services-box .service-info .features {
-    display: flex;
-    align-items: center;
-}
-
-.recently-services .services-box .service-info i{
-    font-size: 24px;
-    font-weight: 500;
-    color: var(--primary-color);
-}
-
-.recently-services .services-box .service-info .features span {
-    border-left: 1px solid #6c757d;
-    padding: 0px 8px;
-    color: #6c757d;
-}
-
-.recently-services .services-box .service-info .features span:last-child {
-    border: none;
-} */
-
 .recently-services .services-box  .see-more .btn-outline-primary.see-more-btn {
     border-color: var(--dark-color) !important;
     background-color: var(--dark-color) !important;
@@ -442,6 +417,13 @@ main {
 .contact-us .contact-form .input-box textarea,
 .add-real-state-modal .input-box textarea {
     height: 35vh;
+}
+
+.search-result .section-title {
+    font-weight: 800;
+    color: var(--dark-color);
+    font-size: 28px;
+    padding-bottom: 50px;
 }
 
 .add-real-state-modal .section-title {
@@ -615,6 +597,7 @@ footer {
 }
 
 /*all-real-estate*/
+.search-result .card-box,
 .all-real-estate .card-box {
     min-height: 35vh;
     width: 100%;
@@ -626,6 +609,7 @@ footer {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.search-result .card-box .image-box,
 .all-real-estate .card-box .image-box {
     height: 30vh;
     width: 100%;
@@ -633,12 +617,14 @@ footer {
     background-color: #ededed;
 }
 
+.search-result .card-box .image-box img,
 .all-real-estate .card-box .image-box img {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
 
+.search-result .card-box .box-description,
 .all-real-estate .card-box .box-description {
     padding: 20px;
     padding-bottom: 0;
@@ -646,12 +632,15 @@ footer {
     color: #333;
 }
 
+.search-result .card-box .box-description .service-title,
 .all-real-estate .card-box .box-description .service-title {
     font-size: 22px;
+    height: 100px;
     color: var(--dark-color);
     font-weight: 600;
 }
 
+.search-result .card-box .box-description .space-and-place,
 .all-real-estate .card-box .box-description .space-and-place {
     display: flex;
     align-items: center;
@@ -660,6 +649,7 @@ footer {
     justify-content: space-between;
 }
 
+.search-result .card-box .btn-outline-primary.see-more-btn,
 .all-real-estate .card-box .btn-outline-primary.see-more-btn {
     width: 100%;
     border-color: var(--dark-color) !important;
@@ -670,6 +660,7 @@ footer {
     color: #fff;
 }
 
+.search-result .card-box .btn-outline-primary.see-more-btn:hover,
 .all-real-estate .card-box .btn-outline-primary.see-more-btn:hover {
     background-color: #fff !important;
     color: var(--primary-color) !important;
@@ -744,12 +735,78 @@ footer {
     padding-top: 15px;
 }
 
+.search-result {
+    min-height: 100vh;
+}
 
+/*user-profile */
+.user-profile .user-cards,
+.user-profile .user-info {
+    width: 100%;
+    padding: 30px;
+    background-color: #fff;
+}
 
+.user-profile .title {
+    color: var(--dark-color);
+    font-weight: 700;
+}
 
+.user-profile .real-estate-card td {
+   min-width: 200px !important;
+}
+
+.user-profile .alert-success {
+    width: 300px;
+    position: fixed;
+    left: 20px;
+    top: 50px;
+    transition: all 0.3s ease-in;
+}
+
+.user-profile .user-info-box {
+    padding: 20px 0px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.user-profile .user-info-box:last-child {
+    border-bottom: none;
+}
+
+.user-profile .user-info-box label {
+    width: 100%;
+    padding-bottom: 6px;
+    color: var(--dark-color);
+    font-weight: 700;
+}
+
+.user-profile .user-info-box input {
+    border: 1px solid #fff;
+}
+
+.user-profile .user-info-box input:focus{
+    border: 1px solid var(--dark-color);
+    outline: none;
+}
+
+.user-profile .user-info-box button {
+    position: absolute;
+    left: 0;
+}
 
 
 @media screen and (max-width:1024px){
+    header, nav {
+        background-color: #fff !important;
+        z-index: 99999 !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    }
+
+    nav .user-name {
+        border: none !important;
+    }
     .main-section .search-bar .search-card {
         height: max-content;
     }
@@ -817,6 +874,14 @@ footer {
     /*register-view*/
     .register-form {
         width: 96%;
+    }
+
+    .contact-us .contact-form {
+        width: 100vw;
+    }
+    /*profile */
+    .user-profile .user-cards {
+        margin-top: 10px;
     }
     
 }

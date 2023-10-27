@@ -24,12 +24,12 @@
                     <li class="nav-item">
                         <a  class="nav-link {{ request()->is('contact*') ? 'active' : '' }}" href="{{ route('contact') }}">الاتصال بنا</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a href="#" type="button"  class="btn btn-primary login mx-2"> أعلن عن عقار</a>
-                    </li> -->
                     @auth
-                    <li class="nav-item">
-                        <span class="px-2 nav-link user-name"> <i class='bx bxs-user-circle'></i> {{auth()->user()->name}} </span>
+                    <li class="nav-item  d-flex">
+                        <span class="px-2 nav-link user-name"> {{auth()->user()->name}} </span>
+                        <a href="{{ route('profile') }}" class="nav-link logout-icon" type="button"><i class='bx bxs-user-circle'></i>
+                            <span class="tooltip"> الملف الشخصي</span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('logout') }}" class="nav-link logout-icon" type="button"><i class='bx bx-log-out'></i>

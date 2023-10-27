@@ -44,4 +44,9 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function realEstates()
+    {
+        return $this->hasMany(RealEstate::class, 'user_id');
+    }
 }

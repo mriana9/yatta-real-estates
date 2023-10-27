@@ -10,6 +10,39 @@ use Illuminate\Support\Facades\Validator;
 
 class RealEstateController extends Controller
 {
+    public function search(Request $request)
+    {
+        $query = RealEstate::query();
+    
+        if ($request->input('place')) {
+            $query->where('Place', 'like', '%' . $request->input('place') . '%');
+        }
+    
+        if ($request->input('min_price')) {
+            $query->where('Price', '>=', $request->input('min_price'));
+        }
+    
+        if ($request->input('max_price')) {
+            $query->where('Price', '<=', $request->input('max_price'));
+        }
+    
+        if ($request->input('type_id')) {
+            $query->whereHas('realEstateType', function ($query) use ($request) {
+                $query->where('title', $request->input('type_id'));
+            });
+        }
+
+        if ($request->input('ad_id')) {
+            $query->whereHas('realEstateAdType', function ($query) use ($request) {
+                $query->where('title', $request->input('ad_id'));
+            });
+        }
+    
+        $results = $query->get();
+    
+        return view('search', compact('results'));
+    }
+     
     public function addRealEstatePost(Request $request){
          // Check if the user is authenticated
         if (!auth()->check()) {
@@ -124,4 +157,53 @@ class RealEstateController extends Controller
         $realEstate = RealEstate::find($id);
         return view('details-real-estates', ['realEstate' => $realEstate]);
     }
+
+    public function destroy($id) {
+        $realEstate = RealEstate::find($id);
+        if (!$realEstate || $realEstate->user_id !== auth()->user()->id) {
+            return back()->with('error', 'Unable to delete this listing.');
+        }
+        $realEstate->delete();
+
+        return redirect()->route('profile')->with('success', 'تم الحذف بنجاح');
+    }
+
+    public function edit($id) {
+        $realEstate = RealEstate::find($id);
+        return view('edit-user-real-estates', ['realEstate' => $realEstate]);
+    }
+
+    public function update(Request $request, $id) {
+        // Find the real estate listing by its ID
+        $realEstate = RealEstate::find($id);
+    
+        // Validate the incoming data
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'place' => 'required',
+            'space' => 'required',
+            'type_id' => 'required',
+            'ad_id' => 'required',
+            'price' => 'required',
+            'price' => 'required',
+            'currency_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        $realEstate->title = $request->input('title');
+        $realEstate->description = $request->input('description');
+        $realEstate->place = $request->input('place');
+        $realEstate->space = $request->input('space');
+        $realEstate->price = $request->input('price');
+        $realEstate->user_id = auth()->user()->id;
+        $realEstate->currency_id = $request->input('currency_id');
+        $realEstate->type_id = $request->input('type_id');
+        $realEstate->ad_id = $request->input('ad_id');
+    
+        $realEstate->save();
+    
+        return redirect()->route('profile')->with('success', 'تم تحديث العقار بنجاح');
+    }
 }
+

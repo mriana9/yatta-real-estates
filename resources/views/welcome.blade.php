@@ -23,39 +23,38 @@
             <div class="search-bar">
                 <div class="search-card">
                     <h2 class="search-text"> إبحث عن عقار</h2>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-12-col-sm-12 px-1">
-                            <input class="form-control" list="datalistOptions1" id="exampleDataList" placeholder="جميع القرى">
-                            <datalist id="datalistOptions1">
-                            <option value="زيف">
-                            <option value="رقعة">
-                            <option value="وسط البلد">
-                            <option value="بيت عمرا">
-                            <option value="خلة المية">
-                            </datalist>
+                    <form action="{{ route('search') }}" method="GET">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" name="place" placeholder="المنطقة" />
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" list="datalistOptions2" name="ad_id" id="exampleDataList" placeholder="نوع العرض " />
+                                <datalist id="datalistOptions2">
+                                    @foreach(App\Models\AdType::all() as $item)
+                                        <option value="{{ $item->title }}"></option>
+                                    @endforeach
+                                </datalist>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" list="datalistOptions3" name="type_id" id="exampleDataList" placeholder="نوع العقار" />
+                                <datalist id="datalistOptions3">
+                                    @foreach(App\Models\RealestatesType::all() as $item)
+                                        <option value="{{ $item->title }}"></option>
+                                    @endforeach
+                                </datalist>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" name="min_price" placeholder="السعر الأدنى" />
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" name="max_price" placeholder="السعر الأعلى" />
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <button type="submit" class="btn btn-outline-primary search-btn"> بحث</button>
+                            </div>
                         </div>
-                        <div class="col-lg-3 col-md-12-col-sm-12 px-1">
-                        <input class="form-control" list="datalistOptions2" id="exampleDataList" placeholder="جميع العقارات">
-                            <datalist id="datalistOptions2">
-                            <option value="بيت مستقل">
-                            <option value="شقة">
-                            <option value="محل">
-                            <option value="مكتب">
-                            <option value="مخزن">
-                            </datalist>                        
-                        </div>
-                        <div class="col-lg-3 col-md-12-col-sm-12 px-1">
-                        <input class="form-control" list="datalistOptions3" id="exampleDataList" placeholder="انواع العروض">
-                            <datalist id="datalistOptions3">
-                            <option value="بيع">
-                            <option value="أجار">
-                            <option value="شراء">
-                            </datalist>
-                        </div>
-                        <div class="col-lg-3 col-md-12-col-sm-12 px-1">
-                            <button type="button" class="btn btn-outline-primary search-btn"> بحث</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -133,19 +132,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="service-info">
-                                        <h3 class="service-title">الخدمات والمميزات</h3>
-                                        <div class="features">
-                                        <i class='bx bx-bookmark-plus'></i>
-                                            <span>ماء</span>
-                                            <span>كهرباء</span>
-                                            <span>انترنت</span>
-                                            <span>شارع الرئيسي</span>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                             <div class="see-more">
                                     <a href="{{ route('real-estate.details', ['id' => $item->id]) }}" class="btn btn-outline-primary see-more-btn mx-auto my-4">

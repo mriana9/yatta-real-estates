@@ -18,14 +18,55 @@
 @section('content')
     <!--main-content-->
     <main>
-        <div class="container">
-            <div class="search-bar">
-
+        <div class="container pb-5">
+        <div class="search-bar my-5">
+                <div class="search-card">
+                    <h2 class="search-text pb-3 d-flex align-items-center"> 
+                        <i class="bx bx-search p-2"></i> 
+                        <span> إبحث عن عقارس</span>
+                    </h2>
+                    <form action="{{ route('search') }}" method="GET">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" name="place" placeholder="المنطقة" />
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" list="datalistOptions2" name="ad_id" id="exampleDataList" placeholder="نوع العرض " />
+                                <datalist id="datalistOptions2">
+                                    @foreach(App\Models\AdType::all() as $item)
+                                        <option value="{{ $item->title }}"></option>
+                                    @endforeach
+                                </datalist>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" list="datalistOptions3" name="type_id" id="exampleDataList" placeholder="نوع العقار" />
+                                <datalist id="datalistOptions3">
+                                    @foreach(App\Models\RealestatesType::all() as $item)
+                                        <option value="{{ $item->title }}"></option>
+                                    @endforeach
+                                </datalist>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" name="min_price" placeholder="السعر الأدنى" />
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <input class="form-control" name="max_price" placeholder="السعر الأعلى" />
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 px-1">
+                                <button type="submit" class="btn btn-outline-primary search-btn"> بحث</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="all-real-estate">
+            <h2 class="search-text pb-3 d-flex align-items-center">
+                <i class='bx bx-list-ul p-2'></i>
+                <span>كل العقارات</span>
+            </h2>
                 <div class="row">
                 @foreach(App\Models\RealEstate::all() as $item)
-                    <div class="col-lg-3 col-md-2 col-sm-12">
+                    <div class="col-lg-4 col-md-2 col-sm-12">
                         <div class="card-box">
                             <div class="image-box">
                                 <img src="{{ $item->image }}" alt="{{ $item->title }}">

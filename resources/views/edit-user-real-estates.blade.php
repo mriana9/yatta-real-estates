@@ -22,25 +22,25 @@
         <div class="add-real-state-modal">
             <div class="section-title"> <i class="bx bx-plus"></i>الاعلان عن عقار جديد</div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('add-real-estate.post') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('real-estates.update', ['id' => $realEstate->id]) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
                                 <div class="input-box">
                                     <label>عنوان الاعلان</label>
-                                    <input type="text" name="title" placeholder="ادخل العنوان">
+                                    <input type="text" name="title" placeholder="ادخل العنوان" value="{{ $realEstate->title }}">
                                 </div>
                                 <div class="input-box">
                                     <label>وصف الاعلان</label>
-                                    <textarea type="text" name="description" placeholder="ادخل الوصف"></textarea>
+                                    <textarea type="text" name="description" placeholder="ادخل الوصف">{{$realEstate->description}}</textarea>
                                 </div>
                                 <div class="input-box">
                                     <label>اسم المنظقة</label>
-                                    <input type="text" name="place" placeholder="اسم المنظقة">
+                                    <input type="text" name="place" placeholder="اسم المنظقة"  value="{{ $realEstate->place }}">
                                 </div>
                                 <div class="input-box">
                                     <label> السعر</label>
-                                    <input type="text" name="price" placeholder="السعر">
+                                    <input type="text" name="price" placeholder="السعر" value="{{ $realEstate->price }}">
                                 </div>
                                 <div class="input-box">
                                     <label> العملة</label>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="input-box">
                                     <label> مساحة المكان</label>
-                                    <input type="text" name="space"  placeholder=" ادخل المساحة">
+                                    <input type="text" name="space"  placeholder=" ادخل المساحة" value="{{ $realEstate->space }}">
                                 </div>
                                 <div class="input-box">
                                     <label>الاسم</label>
@@ -106,7 +106,7 @@
                         </div>
                     @endif
 
-                    <button type="submit" class="btn btn-primary w-100 my-3">ارسال</button>
+                    <button type="submit" class="btn btn-primary w-100 my-3">حفظ</button>
                 </form>
             </div>
         </div>
