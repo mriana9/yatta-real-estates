@@ -45,6 +45,8 @@ Route::get('/search', [RealEstateController::class, 'search'])->name('search');
 Route::get('/real-estate/{id}', [RealEstateController::class, 'showRealEstateDetails'])->name('real-estate.details');
 
 Route::delete('/real-estates/{id}', [RealEstateController::class, 'destroy'])->name('real-estates.destroy');
+Route::post('/real-estates/confirm/{id}', [RealEstateController::class, 'confirm'])->name('real-estates.confirm');
+
 Route::get('/real-estates/edit/{id}',[RealEstateController::class, 'edit'])->name('real-estates.edit');
 Route::post('/real-estates/edit/{id}', [RealEstateController::class, 'update'])->name('real-estates.update');
 

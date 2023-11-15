@@ -19,6 +19,11 @@
     <!--main-content-->
     <main>
         <div class="container">
+        @if(session()->has('success'))
+            <div class="alert alert-success" id="success-alert">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="add-real-state-modal">
             <div class="section-title"> <i class="bx bx-plus"></i>الاعلان عن عقار جديد</div>
             <div class="modal-body">
@@ -136,5 +141,14 @@
         });
     });
 </script>
+
+<script>
+    @if(session('success') && session('delay'))
+        setTimeout(function(){
+            window.location.href = "{{ route('all-real-estates') }}";
+        }, {{ session('delay') }} * 1000); // Convert seconds to milliseconds
+    @endif
+</script>
+
 </body>
 </html>

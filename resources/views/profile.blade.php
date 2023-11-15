@@ -94,11 +94,16 @@
                                         <td>{{ $realEstate->realEstateType->title }}</td>
                                         <td>{{ $realEstate->realEstateAdType->title }}</td>
                                         <td>{{ $realEstate->created_at->format('Y-m-d') }}</td>
-                                        <td class="d-flex justify-content-between align-items-center">
-                                        <form method="POST" action="{{ route('real-estates.destroy', ['id' => $realEstate->id]) }}">
+                                        <td class="d-flex justify-content-between align-items-center ">
+                                        <form class="d-flex justify-content-between align-items-center" method="POST" action="{{ route('real-estates.destroy', ['id' => $realEstate->id]) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">حذف</button>
+                                        </form>
+
+                                        <form class="d-flex justify-content-between align-items-center" method="POST" action="{{ route('real-estates.confirm', ['id' => $realEstate->id]) }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-secondary mx-2" style="min-width: max-content">تاكيد الحجز</button>
                                         </form>
                                             <a href="{{ route('real-estates.edit', ['id' => $realEstate->id]) }}" class="btn btn-primary mx-2">تعديل</a>
                                             <a href="{{ route('real-estate.details', ['id' => $realEstate->id]) }}" class="btn btn-warning">التفاصيل</a>

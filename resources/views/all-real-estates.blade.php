@@ -23,7 +23,7 @@
                 <div class="search-card">
                     <h2 class="search-text pb-3 d-flex align-items-center"> 
                         <i class="bx bx-search p-2"></i> 
-                        <span> إبحث عن عقارس</span>
+                        <span> إبحث عن عقار</span>
                     </h2>
                     <form action="{{ route('search') }}" method="GET">
                         <div class="row">
@@ -60,13 +60,16 @@
                 </div>
             </div>
             <div class="all-real-estate">
-            <h2 class="search-text pb-3 d-flex align-items-center">
-                <i class='bx bx-list-ul p-2'></i>
-                <span>كل العقارات</span>
+            <h2 class="search-text pb-3 d-flex align-items-center justify-content-between">
+                <div class="search-text pb-3 d-flex align-items-center">
+                    <i class='bx bx-list-ul p-2'></i>
+                    <span>جميع العقارات</span>
+                </div>
+                <a href="{{ route('add-real-estates') }}" class="btn-outline-primary btn register ">  <i class="bx bx-right-arrow-alt"></i> أعلن عن عقار</a> 
             </h2>
                 <div class="row">
                 @foreach(App\Models\RealEstate::all() as $item)
-                    <div class="col-lg-4 col-md-2 col-sm-12">
+                    <div class="col-lg-4 col-md-2 col-sm-12 mt-3">
                         <div class="card-box">
                             <div class="image-box">
                                 <img src="{{ $item->image }}" alt="{{ $item->title }}">

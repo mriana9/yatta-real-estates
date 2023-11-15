@@ -96,7 +96,7 @@ class RealEstateController extends Controller
             'ad_id' => 'required',
             'price' => 'required',
             'currency_id.required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required',
         ];
 
         // Perform the validation
@@ -141,7 +141,7 @@ class RealEstateController extends Controller
         $image->save();
 
         // Redirect or return a response
-        return redirect(route('home'))->with('success', 'تم الاعلان بنجاح');
+        return redirect(route('add-real-estates'))->with('success', 'تم الاعلان بنجاح')->with('delay', 1);
     }
 
     public function addRealEstate(){
@@ -167,6 +167,18 @@ class RealEstateController extends Controller
 
         return redirect()->route('profile')->with('success', 'تم الحذف بنجاح');
     }
+
+    public function confirm($id) {
+        $realEstate = RealEstate::find($id);
+    
+        if (!$realEstate || $realEstate->user_id !== auth()->user()->id) {
+            return back()->with('error', 'Unable to confirm this listing.');
+        }
+        $realEstate->delete();
+    
+        return redirect()->route('profile')->with('success', 'تم تاكيد الحجز بنجاح');
+    }
+    
 
     public function edit($id) {
         $realEstate = RealEstate::find($id);

@@ -10,6 +10,10 @@
     font-family: 'Al-Jazeera-Arabic-Regular';
 }
 
+td{
+    min-width: max-content !important;
+}
+
 a {
     text-decoration: none !important;
 }
